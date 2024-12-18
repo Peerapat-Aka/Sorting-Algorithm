@@ -1,18 +1,39 @@
+import timeit
 
-import time
-import pandas as pd
-
-def bubble_sort(arr):
-    n = len(arr)
+start_time = timeit.default_timer()
+def Bubble_sort_revers(a_list):
+    n = len(a_list)
     for i in range(n):
+        flag = 0
         for j in range(0, n-i-1):
-            if arr[j][0] > arr[j+1][0]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+            #swap
+            if a_list[j] < a_list[j+1] :
+                a_list[j], a_list[j+1] = a_list[j+1], a_list[j]
+                flag = 1
+        if flag == 0:
+            break
+    return a_list
 
-if __name__ == "__main__":
-    df = pd.read_csv("tambol.csv")
-    data = df.values.tolist()
-    start_time = time.time()
-    bubble_sort(data)
-    end_time = time.time()
-    print(f"Bubble Sort Time: {round(end_time - start_time, 5)} seconds")
+#เปลี่ยนชื่อไฟล์เอาได้เลย
+
+# week/amphoe.txt
+# week4/mm.txt
+# week4/province.txt
+# week4/tambol.txt
+#      VVVVVVV
+file = 'amphoe'
+list_file = []
+with open(f'Sorting-Algorithm/data_txt/tambol.txt', 'r', encoding='utf-8') as files:
+    for line in files:
+        list_file.append(line.strip())
+        
+#เริ่ม
+list_reversed = Bubble_sort_revers(list_file)
+# แสดงผล
+output_file = f'Sorting-Algorithm/output_data_txt/tambol_bubble.txt'
+with open(output_file, 'w', encoding='utf-8') as write_province:
+    for row in list_reversed:
+        write_province.write(f"{row}\n")
+        
+elapsed = timeit.default_timer() - start_time
+print(f"{elapsed} seconds")
