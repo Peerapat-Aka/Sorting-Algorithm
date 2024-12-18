@@ -14,13 +14,6 @@ def Bubble_sort_revers(a_list):
             break
     return a_list
 
-#เปลี่ยนชื่อไฟล์เอาได้เลย
-
-# week/amphoe.txt
-# week4/mm.txt
-# week4/province.txt
-# week4/tambol.txt
-#      VVVVVVV
 file = 'amphoe'
 list_file = []
 with open(f'Sorting-Algorithm/data_txt/tambol.txt', 'r', encoding='utf-8') as files:
